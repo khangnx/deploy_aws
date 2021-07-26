@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Categories</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Category Name</th>
+      <th>Category Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.title %></td>
+        <td>
+        <%# Vì từ 1 lấy qua bảng nhiều nên phải là category_attachments %>
+        <% category.category_attachments.each do |img_attch| %>
+          <%# Phải có .url mới lấy duoc hình ra từ stirng(img_attch.attachment) hình trong thu mục %>
+          <%= image_tag(img_attch.attachment.url, :size => "260x180") if img_attch.attachment %><br/>
+        <% end %>
+        </td>
+        <td><%= link_to 'Show', category %></td>
+        <td><%= link_to 'Edit', edit_category_path(category) %></td>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Category', new_category_path %>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <% if @title %>
+    <title><%= @title %></title>
+  <% else %>
+    <title>Coca Book Store</title>
+  <% end %>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.6.2/ckeditor.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :header %>
+  </head>
+
+  <body id="store">
+  <%# this phase code for FB comment Plugin %>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0&appId=546857186740522&autoLogAppEvents=1" nonce="HuKnweHx"></script>
+  <%# endthis phase code for FB comment Plugin %>
+    <div id="banner">
+     <%= image_tag("coca_logo.jpg", :size => "100x50") %>
+     <%= @page_title || "Coca Book Store" %>
+    </div>
+
+    <div id="columns">
+      <div id="side">
+        <div id="cart">
+         <%= hide_cart_if( current_cart.line_items.empty?, :id => 'cart' ) do %>
+            <%= render current_cart %>
+          <% end %>
+        </div>
+         <%# home is root is store/index %>
+        <%=  link_to "Home", "/" %><br/> 
+        <a href="/products/">Products List</a><br/>
+        <a href="/users/">Users List</a><br/>
+        <a href="/posts">Posts List</a><br/>
+        <a href="/categories">Categories List</a><br/>
+        <a href="/orders">Order List</a><br/>
+        <a href="/imports">Import Order CSV / Excel</a><br/>
+        <a href="/chatwork">Send message to chatwork</a><br/>
+        <a href="/articles">Articles Link</a><br/>
+        <a href="/admin">LogOut</a><br/>
+      </div>
+    </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    <%# </div> %>
+  </body>
+  <footer class="text-center text-white fixed-bottom" style="background-color: #21081a;margin-top: 240px;">
+    <!-- Grid container -->
+    <div class="container p-4"><%= image_tag("book-footer.jpg", :size => "250x150")%></div>
+    <!-- Grid container -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(34, 167, 240, 1);">
+      © 2021 Copyright:
+      <a class="text-white" href="https://cocabookstore.com/">Coca Book Store</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    if ($('textarea').length > 0) {
+        var data = $('textarea');
+        $.each(data, function(i) {
+            CKEDITOR.replace(data[i].id);
+        });
+    }
+ });
+</script>
+</html>

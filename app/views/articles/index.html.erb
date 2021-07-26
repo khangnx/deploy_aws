@@ -1,0 +1,12 @@
+<%= link_to "New Article", new_article_path %>
+<% @articles.each do |article| %>
+  <h3><%= article.title.html_safe %></h3>
+  <p><%= article.body.html_safe %></p>
+  <% if article.image.present?  %>
+  <p><%= image_tag article.image, :size => "100x100" %>
+  <% end %>
+  <%= link_to "Edit Article", edit_article_path(article) %>
+  <% if article != @articles.last %>
+  <% end %>
+<% end %>
+<div class="fb-comments" data-href="http://localhost:3000/" data-width="10" data-numposts="2"></div>

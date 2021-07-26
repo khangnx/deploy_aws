@@ -1,0 +1,11 @@
+<% if @current_item != nil %>
+    <% if @current_item.id == line_item.id %>
+<tr id="current_item">
+    <% else %>
+<tr>
+    <% end %>
+<% end %>
+        <td><%= line_item.quantity %> x </td>
+        <td><%= line_item.product.title %></td>
+        <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+    </tr>

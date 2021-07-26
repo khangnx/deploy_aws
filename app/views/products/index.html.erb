@@ -1,0 +1,31 @@
+<div id="product_list">
+    <h1>Products</h1>
+    <% content_for :header do %>
+        <span>Header contentfor of product</span>
+    <% end %>
+    <table style="width: 100%;">
+    <% @products.each do |product| %>
+        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+            <td>
+                <%= image_tag(product.image_url, :class => 'list_image') %>
+            </td>
+            <td class="list_description">
+                <dl>
+                    <dt><%= product.title %></dt>
+                    <dd><%= truncate(strip_tags(product.description),
+                            :length => 250) %></dd>
+                </dl>
+            </td>
+            <td class="list_actions">
+                <%= link_to 'Show', product %><br/>
+                <%= link_to 'Edit', edit_product_path(product) %><br/>
+                <%= link_to 'Destroy', product, :method => :delete,
+                    data: { confirm: 'Are you sure?' },
+                    :remote => true , :class => "destroy-product" %>
+            </td>
+        </tr>
+    <% end %>
+    </table>
+</div>
+<br />
+<%= link_to 'New product', new_product_path %>

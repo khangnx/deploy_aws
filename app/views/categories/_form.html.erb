@@ -1,0 +1,37 @@
+<%= form_with(model: category, html: { multipart: true }) do |form| %>
+  <% if category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+     <%= form.label :title %><br>
+     <%= form.text_field :title %>
+   </div>
+   <% if @from_edit.present? %>
+        <% @category.category_attachments.each do |img_attch| %>
+          <%# Phải có .url mới lấy duoc hình ra từ stirng(img_attch.attachment) hình trong thu mục %>
+          <% if img_attch.attachment.url %>
+          <div class="field">
+             <%= image_tag(img_attch.attachment.url, :size => "260x180")  %><br/>
+          <div>
+          <% end %>
+        <% end %>
+   <% end %>
+
+   <%= form.fields_for @category_attachments do |p| %>
+     <div class="field">
+       <%= p.label :attachment %><br>
+       <%= p.file_field :attachment, :multiple => true, name: "category_attachments[attachment][]" %>
+     </div>
+   <% end %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

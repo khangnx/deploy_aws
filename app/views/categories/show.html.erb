@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<h1>Categories Show</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Category Name</th>
+      <th>Category Image</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @category.title %></td>
+        <td>
+        <%# Vì từ 1 lấy qua bảng nhiều nên phải là category_attachments %>
+        <% @category.category_attachments.each do |img_attch| %>
+          <%# Phải có .url mới lấy duoc hình ra từ stirng(img_attch.attachment) hình trong thu mục %>
+          <%= image_tag(img_attch.attachment.url, :size => "260x180") if img_attch.attachment %><br/>
+        <% end %>
+        </td>
+      </tr>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

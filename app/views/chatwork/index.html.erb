@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+<h4 class='text-center'>This is form sending message to Chatwork</h4>
+<br/>
+<%= form_tag "/chatwork", :method => "post" do %>
+    <%= label_tag "chatwork_api_token" %>
+    <%= text_field_tag "chatwork_api_token"%><br/><br/>
+    <%= label_tag 'Message input here', nil, class: 'text-center' %>
+    <%= text_area_tag "message_send", nil, size: "50x5"%>
+    <div><%= submit_tag "Send Message" %></div>
+<% end %>

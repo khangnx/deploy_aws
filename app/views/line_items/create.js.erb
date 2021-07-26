@@ -1,0 +1,7 @@
+var content = "<%= escape_javascript(render(current_cart)) %>";
+document.getElementById("cart").innerHTML = content;
+$("#current_item").css({'background-color':'#88ff88'});
+$("#current_item").animate({backgroundColor:'#114411'}, 1000 );
+var p_notice = document.getElementById("notice");
+if(p_notice !== null)
+    p_notice.remove();

@@ -1,0 +1,18 @@
+<h3>Books Store</h3>
+<p>
+    Dear <b><%= @order.name %></b>,
+</p>
+ 
+<p>
+    Thank you for your order, your items:
+</p>
+<table>
+    <tr>
+        <th colspan="2">Quantity</th>
+        <th>Description</th>
+    </tr>
+    <%= render @order.line_items %>
+</table>
+ 
+<p>Your payment type: <b><%= @order.pay_type %></b></p>
+<p>Thanks for shopping with <b>Books Store<b> and best regards.</p>

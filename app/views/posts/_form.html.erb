@@ -1,0 +1,35 @@
+<div class="depot_form">
+  <%= form_with(model: post) do |form| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+          <% post.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <fieldset>
+    <legend>Enter Post and Users</legend>
+      <div>
+        <%= form.label :body %>
+        <%= form.text_area  :body, :size => 40 %>
+      </div>
+      <div>
+        <%= form.label :user_id, 'User ID' %>&nbsp;
+        <%= form.text_field  :user_id, :size => 40 %>
+      </div>
+      <div>
+       <!--- Your existing form fields -->
+        <%= form.label :cover_photo, "Upload" %>
+        <%= form.file_field :cover_photo %>
+      </div>  
+  <!--- A submit button -->
+    </fieldset>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
