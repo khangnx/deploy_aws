@@ -6,11 +6,13 @@ ruby '3.0.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 1.4'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+gem 'rexml', '~> 3.2', '>= 3.2.4' #GEm hỗ trợ cho minitest cùa rails
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -41,14 +43,6 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
 end
 
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'will_paginate', '>= 3.0'
@@ -72,3 +66,11 @@ gem "koala" #gem send post to FB
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f' #Gem dùng hổ tro ảnh cho gem paperclip
 gem "ckeditor" #tạo ra các form text soạn thảo văn bản
 gem "paperclip" #Gem dùng chèm ảnh vào bài viết
+#GEm for test
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0.1'
+  gem "factory_bot_rails"
+  gem "rails-controller-testing" #gem nay dung de render template, assign triong controller
+  gem 'capybara' #để mô phỏng các request của browser với HTTP, test Feature
+end
+#end gem for test

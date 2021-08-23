@@ -1,7 +1,5 @@
 <div class="depot_form">
- 
-    <%= form_for @user do |f| %>
-        <% if @user.errors.any? %>
+<% if @user.errors.any? %>
             <div id="error_explanation">
                 <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved: </h2>
                 <ul>
@@ -11,7 +9,8 @@
                 </ul>
             </div>
         <% end %>
-  
+ 
+    <%= form_for @user do |f| %>
         <fieldset>
         <legend>Enter User Details</legend>
   
@@ -34,7 +33,7 @@
         </div>
   
         <div>
-            <%= f.submit %>
+            <%= f.submit "Create" %>
         </div> 
         </fieldset>
     <% end %>

@@ -14,22 +14,17 @@
     <fieldset>
     <legend>Enter Post and Users</legend>
       <div>
-        <%= form.label :body %>
+        <%= form.label :body, "Body" %>
         <%= form.text_area  :body, :size => 40 %>
       </div>
       <div>
         <%= form.label :user_id, 'User ID' %>&nbsp;
         <%= form.text_field  :user_id, :size => 40 %>
       </div>
-      <div>
-       <!--- Your existing form fields -->
-        <%= form.label :cover_photo, "Upload" %>
-        <%= form.file_field :cover_photo %>
-      </div>  
   <!--- A submit button -->
     </fieldset>
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit "Add Post" %>
     </div>
   <% end %>
 </div>

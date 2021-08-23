@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chat_room' => 'home#index'
   mount Ckeditor::Engine => '/ckeditor'
   resources :articles
   resources :categories

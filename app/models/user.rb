@@ -19,6 +19,7 @@ class User < ApplicationRecord
         if password.present?
             generate_salt
             self.hashed_password = self.class.encrypt_password(password,salt)
+            puts self.hashed_password
         end
     end
 

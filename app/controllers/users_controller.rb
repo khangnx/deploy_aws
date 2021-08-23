@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:new]
+  skip_before_action :authorize, only: %i[ new create]
   before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
   def index
-    # @users = User.all
-    @users = fetch_from_redis
+    @users = User.all
+    # @users = fetch_from_redis
     # puts @users.inspect
   end
 
@@ -28,8 +28,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        # NotifierMailer.user_register_email(@user).deliver_now #send mail normal
-        SendEmailJob.set(wait: 2.minutes).perform_later @user #csendmail by sidekiq
+        #NotifierMailer.user_register_email(@user).deliver_now #send mail normal 
+        # SendEmailJob.set(wait: 2.minutes).perform_later @user #csendmail by sidekiq
         format.html { redirect_to users_url, notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else

@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_26_072700) do
+ActiveRecord::Schema.define(version: 2021_08_04_131556) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_07_26_072700) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_07_26_072700) do
 
   create_table "attachment_binaries", force: :cascade do |t|
     t.integer "attachment_id"
-    t.binary "data", limit: 10485760
+    t.binary "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attachment_id"], name: "index_attachment_binaries_on_attachment_id"
@@ -116,6 +119,13 @@ ActiveRecord::Schema.define(version: 2021_07_26_072700) do
     t.integer "order_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "name"
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "name"
     t.text "address"
@@ -126,7 +136,7 @@ ActiveRecord::Schema.define(version: 2021_07_26_072700) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

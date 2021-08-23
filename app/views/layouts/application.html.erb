@@ -6,8 +6,8 @@
   <% else %>
     <title>Coca Book Store</title>
   <% end %>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <%# <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.6.2/ckeditor.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -45,6 +45,8 @@
         <a href="/imports">Import Order CSV / Excel</a><br/>
         <a href="/chatwork">Send message to chatwork</a><br/>
         <a href="/articles">Articles Link</a><br/>
+        <a href="/users/new" onclick="console.log("aaaaaaa")">Register-User</a><br/>
+        <a href="/chat_room">Chat Room</a><br/>
         <a href="/admin">LogOut</a><br/>
       </div>
     </div>

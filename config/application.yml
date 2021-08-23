@@ -1,0 +1,15 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+CHATWORK_API_TOKEN: "3efd5785f7227bd9abaf2697537f74b4"
+# note: Access token phải lấy ở link https://developers.facebook.com/tools/explorer/?method=GET&path=me%2Faccounts&version=v11.0&classic=0
+# Access token là parameter access_token trong mảng data trả ve sau khi nhấn debug
+FB_ACCESS_TOKEN: "EAAHxXRxbySoBAPq2xZCZBlYCwS9GdMxKALYJ9OfZCneTT386vOk1YE62FYStmYh5rvFRa7bAWII0w1CRAT6QZCKVmmLZA94JUg4MyFFH4vI3QkRLm6OZBh6gY59BUOInolHldZBcMdsZCSi9ZB8q2aVHiMMTEg3V9ZB64qBnfbl0mxQacLbC8YXog7MB3G9G4CFPBQkeYt1B7gUwY6ajambYZC4"
